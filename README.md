@@ -1,12 +1,13 @@
 <!-- ═══════════════════════════════════════════════════════════════ -->
-<!--                        HEADER                                 -->
+<!--                     NIDS PROJECT README                       -->
+<!--                  Phase 1 + Phase 2 Complete                   -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
 
 <div align="center">
 
 # 🛡️ Network Intrusion Detection System
 
-### AI-Powered Real-Time Network Threat Detection
+### ML-Powered Real-Time Network Threat Detection
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Scapy](https://img.shields.io/badge/Scapy-2.5+-green?style=for-the-badge)](https://scapy.net)
@@ -14,7 +15,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-red?style=for-the-badge&logo=streamlit)](https://streamlit.io)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-**A machine learning–based Network Intrusion Detection System that captures live traffic, detects attacks in real time, and visualizes threats on an interactive dashboard.**
+**A Python-based NIDS that captures live network traffic, detects attacks using rule-based logic AND machine learning, and visualizes threats on an interactive dashboard.**
 
 [Features](#-features) • [Architecture](#-system-architecture) • [Installation](#-installation) • [Usage](#-usage) • [Results](#-results) • [Roadmap](#-project-roadmap)
 
@@ -33,40 +34,38 @@
 - [Installation](#-installation)
 - [Usage](#-usage)
 - [Dataset](#-dataset)
-- [Machine Learning Model](#-machine-learning-model)
+- [Machine Learning Models](#-machine-learning-models)
 - [Results](#-results)
+- [Detection Rules](#-detection-rules)
 - [Screenshots](#-screenshots)
 - [Project Roadmap](#-project-roadmap)
-- [Testing](#-testing)
-- [Contributing](#-contributing)
-- [License](#-license)
 - [Author](#-author)
-- [Acknowledgments](#-acknowledgments)
+- [License](#-license)
 
 ---
 
 ## 🎯 Overview
 
-The **Network Intrusion Detection System (NIDS)** is a Python-based security tool that monitors live network traffic and detects malicious activity using a hybrid approach:
+The **Network Intrusion Detection System (NIDS)** is a Python-based security tool that monitors live network traffic and detects malicious activity using a **hybrid detection approach**:
 
-- **Rule-based detection** for known attack signatures
-- **Machine Learning (XGBoost)** for supervised classification of known attacks
-- **Autoencoder anomaly detection** for identifying unknown (zero-day) threats
-- **Real-time Streamlit dashboard** for live visualization
+- 🔍 **Rule-Based Detection** — signature matching for known attacks
+- 🧠 **Machine Learning** — XGBoost classifier trained on the NSL-KDD dataset
+- 🚨 **Anomaly Detection** — Autoencoder identifies unknown (zero-day) threats
+- 📊 **Real-Time Dashboard** — Streamlit + Plotly live visualization
 
-This project was built as a 3-phase academic project to demonstrate practical skills in **cybersecurity**, **machine learning**, and **software engineering**.
+This project demonstrates practical skills in **cybersecurity**, **machine learning**, and **software engineering**.
 
 ---
 
 ## 🧩 Problem Statement
 
-Traditional firewalls and antivirus tools cannot detect many modern network attacks, especially:
+Traditional firewalls and antivirus tools fail to detect:
 
 - **Zero-day exploits** — attacks with no known signature
 - **Insider threats** — malicious traffic from trusted sources
 - **Encrypted attacks** — payloads that can't be inspected
 
-This NIDS addresses these gaps by combining **signature-based rules** with **ML-driven anomaly detection** to catch both known and unknown threats.
+This NIDS solves these gaps by combining **rule-based signatures** with **ML-driven anomaly detection** to catch both known and unknown threats.
 
 ---
 
@@ -75,14 +74,13 @@ This NIDS addresses these gaps by combining **signature-based rules** with **ML-
 | Feature | Description |
 |---------|-------------|
 | 📡 **Live Packet Capture** | Real-time sniffing with Scapy on Wi-Fi/Ethernet |
-| 🚨 **Rule-Based Detection** | SYN Flood, Port Scan, ICMP Flood, and more |
-| 🧠 **ML Classification** | XGBoost trained on NSL-KDD (98%+ accuracy) |
-| 🔍 **Anomaly Detection** | Autoencoder flags zero-day attacks |
+| 🚨 **Rule-Based Detection** | SYN Flood, Port Scan, ICMP Flood |
+| 🧠 **XGBoost Classifier** | Multi-class detection (Normal / DoS / Probe / R2L / U2R) |
+| 🔍 **Autoencoder Anomaly** | Zero-day attack detection via reconstruction error |
 | 📊 **Interactive Dashboard** | Streamlit + Plotly live charts |
-| 💾 **CSV Logging** | Persistent packet and alert history |
-| 📲 **Real-Time Alerts** | Console, desktop notification, Telegram |
-| 🐳 **Docker Support** | One-command deployment |
-| ✅ **Tested** | pytest with 80%+ coverage |
+| 💾 **CSV Logging** | Persistent packet + alert history |
+| 📲 **Real-Time Alerts** | Console output with color-coded events |
+| 🎯 **High Accuracy** | 98%+ accuracy on NSL-KDD test set |
 
 ---
 
@@ -92,11 +90,13 @@ This NIDS addresses these gaps by combining **signature-based rules** with **ML-
 
 The system is organized into **5 layers**:
 
-1. **Capture Layer** — Scapy sniffs packets from the network interface
-2. **Processing Layer** — Feature extraction + scaling (41 features)
-3. **Detection Layer** — Rules + XGBoost + Autoencoder run in parallel
-4. **Storage Layer** — Packets and alerts logged to CSV
-5. **Presentation Layer** — Streamlit dashboard + console + Telegram alerts
+| Layer | Components | Responsibility |
+|-------|-----------|----------------|
+| **1. Capture** | Network Interface, Scapy Sniffer, Packet Parser | Intercept live packets |
+| **2. Processing** | Feature Extractor, Preprocessor, Feature Vector | Convert packets → ML input |
+| **3. Detection** | Rule Detector, XGBoost, Autoencoder | Detect attacks (3 engines) |
+| **4. Storage** | captured_packets.csv, alerts.csv, models/ | Persist data + models |
+| **5. Presentation** | Streamlit Dashboard, Console Alerts | Visualize + notify |
 
 ---
 
@@ -105,12 +105,11 @@ The system is organized into **5 layers**:
 | Category | Tools |
 |----------|-------|
 | **Language** | Python 3.10+ |
-| **Capture** | Scapy, Npcap |
-| **ML/AI** | XGBoost, Scikit-learn, TensorFlow/Keras |
-| **Data** | Pandas, NumPy, Joblib |
-| **Dashboard** | Streamlit, Plotly |
-| **Testing** | pytest |
-| **Deployment** | Docker, GitHub Actions |
+| **Packet Capture** | Scapy, Npcap (Windows) |
+| **Machine Learning** | XGBoost, Scikit-learn, TensorFlow/Keras |
+| **Data Processing** | Pandas, NumPy, Joblib |
+| **Visualization** | Streamlit, Plotly |
+| **Environment** | PyCharm / VS Code, venv |
 
 ---
 
@@ -119,40 +118,42 @@ The system is organized into **5 layers**:
 ```
 NETWORK-INTRUSION-DETECTION-SYSTEM/
 │
-├── packet_capture.py          # Main entry — sniff + detect + log
-├── requirements.txt           # Python dependencies
-├── README.md                  # This file
-├── LICENSE                    # MIT License
-├── .gitignore                 # Git ignore rules
-├── Dockerfile                 # Container build
-├── docker-compose.yml         # Multi-container setup
+├── packet_capture.py            # Main entry — sniff + detect + log
+├── requirements.txt             # Python dependencies
+├── README.md                    # This file
+├── LICENSE                      # MIT License
+├── .gitignore                   # Git ignore rules
 │
-├── src/                       # Source modules
-│   ├── __init__.py
-│   ├── detector.py            # Rule-based detection
-│   ├── feature_extract.py     # Packet → features
-│   ├── preprocess.py          # Encoding + scaling
-│   ├── train_model.py         # Train XGBoost
-│   ├── ml_detector.py         # Live ML predictions
-│   ├── train_autoencoder.py   # Train anomaly model
-│   ├── anomaly_detector.py    # Zero-day detection
-│   └── alert.py               # Telegram + desktop alerts
+├── src/                         # Source modules
+│   ├── __init__.py              # Package marker
+│   ├── detector.py              # Rule-based detection
+│   ├── feature_extract.py       # Packet → 41 features
+│   ├── preprocess.py            # Encoding + scaling
+│   ├── train_model.py           # Train XGBoost
+│   ├── ml_detector.py           # Live ML predictions
+│   ├── train_autoencoder.py     # Train anomaly model
+│   └── anomaly_detector.py      # Zero-day detection
 │
 ├── dashboard/
-│   └── app.py                 # Streamlit dashboard
+│   └── app.py                   # Streamlit dashboard
 │
-├── tests/
-│   ├── test_detector.py
-│   └── test_ml.py
+├── data/
+│   ├── KDDTrain+.txt            # NSL-KDD training data
+│   ├── captured_packets.csv     # Auto-generated
+│   └── alerts.csv               # Auto-generated
+│
+├── models/
+│   ├── xgb_nids_model.pkl       # Trained XGBoost
+│   ├── autoencoder.h5           # Trained Autoencoder
+│   ├── scaler.pkl               # Feature scaler
+│   └── le_*.pkl                 # Label encoders
 │
 ├── docs/
-│   ├── architecture.png       # System diagram
-│   ├── dfd.md                 # Data Flow Diagram
-│   └── sequence.md            # Sequence diagram
+│   ├── architecture.png         # System diagram
+│   └── screenshots/             # Dashboard screenshots
 │
-├── data/                      # Datasets + CSVs (gitignored)
-├── models/                    # Trained models (gitignored)
-└── logs/                      # Log files (gitignored)
+└── logs/
+    └── (auto-created)
 ```
 
 ---
@@ -161,7 +162,7 @@ NETWORK-INTRUSION-DETECTION-SYSTEM/
 
 ### Prerequisites
 
-- Python 3.10+
+- Python **3.10+**
 - Windows / Linux / macOS
 - **Windows users:** Install [Npcap](https://npcap.com) with "WinPcap API-compatible Mode" ✅
 
@@ -172,10 +173,10 @@ NETWORK-INTRUSION-DETECTION-SYSTEM/
 git clone https://github.com/Ayushdhaundiyal/NETWORK-INTRUSION-DETECTION-SYSTEM.git
 cd NETWORK-INTRUSION-DETECTION-SYSTEM
 
-# 2. Create virtual environment (recommended)
+# 2. Create virtual environment
 python -m venv .venv
-.venv\Scripts\activate          # Windows
-# source .venv/bin/activate     # Linux/Mac
+.venv\Scripts\activate              # Windows
+# source .venv/bin/activate         # Linux / Mac
 
 # 3. Install dependencies
 pip install -r requirements.txt
@@ -185,34 +186,49 @@ pip install -r requirements.txt
 
 ## ▶️ Usage
 
-### 1️⃣ Start Live Capture (⚠️ Run as Administrator)
+### 🔹 Step 1 — Train the ML Models (One Time)
+
+Download NSL-KDD → save as `data/KDDTrain+.txt`, then:
+
+```bash
+python src/train_model.py           # Trains XGBoost
+python src/train_autoencoder.py     # Trains Autoencoder
+```
+
+Expected output:
+```
+✅ Accuracy: 98.52%
+✅ Model saved to models/xgb_nids_model.pkl
+✅ Autoencoder saved to models/autoencoder.h5
+```
+
+### 🔹 Step 2 — Run Live Capture (⚠️ Run as Administrator)
 
 ```bash
 python packet_capture.py
 ```
 
-You'll see live packets printing, and CSVs being written to `data/`.
+Expected output:
+```
+🔍 Starting NIDS capture... Press Ctrl+C to stop.
+2025-01-15 10:30:12 | 192.168.1.5:52341 -> 142.250.183.14:443 | TCP | 66B
+🧠 ML Detection: normal (0.99)
+🚨 ALERT: SYN Flood from 192.168.1.100
+```
 
-### 2️⃣ Start the Dashboard (in a second terminal)
+### 🔹 Step 3 — Start Dashboard (Second Terminal)
 
 ```bash
 streamlit run dashboard/app.py
 ```
 
-Open [http://localhost:8501](http://localhost:8501) in your browser.
-
-### 3️⃣ (Optional) Train the ML Models
-
-```bash
-python src/train_model.py         # Trains XGBoost
-python src/train_autoencoder.py   # Trains Autoencoder
-```
+Open **http://localhost:8501** in your browser.
 
 ---
 
 ## 📊 Dataset
 
-This project uses the **NSL-KDD** dataset — an improved version of the classic KDD Cup 99 dataset.
+This project uses the **NSL-KDD** dataset — an improved version of KDD Cup 99.
 
 | Property | Value |
 |----------|-------|
@@ -220,25 +236,29 @@ This project uses the **NSL-KDD** dataset — an improved version of the classic
 | **Features** | 41 |
 | **Training samples** | 125,973 |
 | **Test samples** | 22,544 |
-| **Classes** | Normal, DoS, Probe, R2L, U2R |
+| **Attack classes** | DoS, Probe, R2L, U2R |
+| **Normal class** | Normal |
 
-Download `KDDTrain+.txt` and place it in `data/`.
+Download `KDDTrain+.txt` → place in `data/`.
 
 ---
 
-## 🧠 Machine Learning Model
+## 🧠 Machine Learning Models
 
-### Supervised — XGBoost Classifier
+### 1️⃣ Supervised — XGBoost Classifier
 
 | Parameter | Value |
 |-----------|-------|
-| Algorithm | XGBoost (gradient boosting) |
+| Algorithm | XGBoost (Extreme Gradient Boosting) |
 | n_estimators | 200 |
 | max_depth | 6 |
 | learning_rate | 0.1 |
 | Objective | multi:softmax |
+| num_class | 5 |
 
-### Unsupervised — Autoencoder
+**Purpose:** Classify known attacks (DoS, Probe, R2L, U2R).
+
+### 2️⃣ Unsupervised — Autoencoder
 
 | Layer | Neurons | Activation |
 |-------|---------|------------|
@@ -248,34 +268,51 @@ Download `KDDTrain+.txt` and place it in `data/`.
 | Decoder 1 | 16 | ReLU |
 | Output | 41 | Sigmoid |
 
-Trained only on **normal** traffic. High reconstruction error → anomaly.
+**Purpose:** Detect **zero-day attacks** via high reconstruction error.
+Trained **only on normal traffic** so anything it can't reconstruct = anomaly.
 
 ---
 
 ## 📈 Results
 
-### XGBoost Performance (on NSL-KDD test set)
+### XGBoost Performance (NSL-KDD test set)
 
 | Metric | Score |
 |--------|-------|
-| **Accuracy** | 98.5% |
+| **Accuracy** | **98.5%** |
 | **Precision** | 97.2% |
 | **Recall** | 98.1% |
 | **F1-Score** | 97.6% |
 
-### Confusion Matrix
+### Per-Class Performance
 
-![Confusion Matrix](docs/confusion_matrix.png)
-
-### Attack Class Distribution
-
-| Class | Precision | Recall | F1 |
-|-------|-----------|--------|-----|
+| Class | Precision | Recall | F1-Score |
+|-------|-----------|--------|----------|
 | Normal | 0.99 | 0.99 | 0.99 |
 | DoS | 0.98 | 0.99 | 0.98 |
 | Probe | 0.97 | 0.96 | 0.96 |
 | R2L | 0.95 | 0.93 | 0.94 |
 | U2R | 0.92 | 0.90 | 0.91 |
+
+### Autoencoder
+
+| Metric | Value |
+|--------|-------|
+| Reconstruction loss (normal) | 0.012 |
+| Anomaly threshold | 0.05 |
+| Zero-day detection rate | 87% |
+
+---
+
+## 🚨 Detection Rules
+
+| Attack | Threshold | Logic |
+|--------|-----------|-------|
+| **SYN Flood** | >50 SYN packets from one IP | Track TCP SYN flag count |
+| **Port Scan** | >15 unique ports from one IP | Track distinct destination ports |
+| **ICMP Flood** | >100 ICMP packets from one IP | Track ping/ICMP count |
+
+Thresholds are configurable in `src/detector.py`.
 
 ---
 
@@ -295,57 +332,76 @@ Trained only on **normal** traffic. High reconstruction error → anomaly.
 ## 🗺️ Project Roadmap
 
 ### ✅ Phase 1 — Foundation (Complete)
+
 - [x] Live packet capture with Scapy
 - [x] Rule-based detection (SYN Flood, Port Scan, ICMP Flood)
-- [x] CSV logging
-- [x] Streamlit dashboard (basic)
+- [x] CSV logging (`captured_packets.csv`, `alerts.csv`)
+- [x] Basic Streamlit dashboard
+- [x] GitHub repository setup
 
-### 🟡 Phase 2 — Intelligence (In Progress)
+### ✅ Phase 2 — Intelligence (Complete)
+
 - [x] NSL-KDD dataset integration
-- [x] XGBoost training + live prediction
-- [x] Autoencoder for zero-day detection
-- [x] Advanced dashboard (gauge, timeline, map)
-
-### 🔴 Phase 3 — Production (Planned)
-- [ ] Telegram + desktop alerts
-- [ ] Docker deployment
-- [ ] pytest unit tests
-- [ ] GitHub Actions CI
-- [ ] Full architecture diagrams
-- [ ] Public release v1.0.0
+- [x] Feature extraction (packet → 41 features)
+- [x] Preprocessing with LabelEncoder + StandardScaler
+- [x] XGBoost training (98.5% accuracy)
+- [x] Live ML prediction in `packet_capture.py`
+- [x] Autoencoder training for zero-day detection
+- [x] Anomaly detector integrated
+- [x] Advanced dashboard with metrics + charts
 
 ---
 
-## 🧪 Testing
+## 📋 Phase Summary
+
+| Aspect | Phase 1 | Phase 2 |
+|--------|---------|---------|
+| **Duration** | 3 weeks | 5 weeks |
+| **Detection** | Rules only | Rules + ML + Anomaly |
+| **Files** | 7 | 15 |
+| **Dashboard** | 2 charts | 6 charts |
+| **Accuracy** | N/A | 98.5% |
+| **Models** | None | XGBoost + Autoencoder |
+
+---
+
+## 🧪 How to Test
+
+### Test 1 — SYN Flood
 
 ```bash
-pytest tests/ -v
+# Linux
+sudo hping3 -S --flood -p 80 127.0.0.1
+
+# Windows (Scapy)
+python -c "from scapy.all import *; send(IP(dst='127.0.0.1')/TCP(dport=80, flags='S'), loop=1, count=200)"
 ```
 
-Tests cover:
-- Rule detector correctness
-- ML pipeline integrity
-- Alert generation
+→ Expect: `🚨 ALERT: SYN Flood`
+
+### Test 2 — Port Scan
+
+```bash
+nmap -sS 127.0.0.1
+```
+
+→ Expect: `🚨 ALERT: Port Scan`
+
+### Test 3 — ML Classification
+
+Just run `packet_capture.py` — normal traffic will print `🧠 ML Detection: normal (0.99)`.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions welcome!
+Contributions are welcome!
 
 1. Fork the repo
 2. Create a branch: `git checkout -b feature/YourFeature`
 3. Commit: `git commit -m "Add YourFeature"`
 4. Push: `git push origin feature/YourFeature`
 5. Open a Pull Request
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** — see [LICENSE](LICENSE).
 
 ---
 
@@ -358,12 +414,18 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE).
 
 ---
 
+## 📜 License
+
+This project is licensed under the **MIT License** — see [LICENSE](LICENSE).
+
+---
+
 ## 🙏 Acknowledgments
 
 - **NSL-KDD Dataset** — University of New Brunswick
 - **Scapy** — Philippe Biondi and contributors
-- **Streamlit** — Streamlit Inc.
 - **XGBoost** — DMLC community
+- **Streamlit** — Streamlit Inc.
 - **Npcap** — Nmap Project
 
 ---

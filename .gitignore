@@ -1,0 +1,9 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.idea/
+data/*.csv
+data/*.txt
+models/*.pkl
+logs/

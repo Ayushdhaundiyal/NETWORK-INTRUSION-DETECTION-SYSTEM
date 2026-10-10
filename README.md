@@ -557,6 +557,11 @@ Distributed under the **MIT License** — see [LICENSE](LICENSE) for details.
 
 ![Made with](https://img.shields.io/badge/Made%20with-❤️%20and%20Python-red?style=for-the-badge)
 
-**Made by Ayush Dhaundiyal • 2025**
+**Made by Ayush Dhaundiyal • 2026**
+
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+
 
 </div>

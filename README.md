@@ -1,15 +1,15 @@
 <!-- ═══════════════════════════════════════════════════════════════════════ -->
-<!--                         NIDS PROJECT README                          -->
-<!--                          PHASE 1 + PHASE 2                             -->
+<!--                         NIDS PROJECT README                           -->
+<!--                          PHASE 1 + PHASE 2                            -->
 <!-- ═══════════════════════════════════════════════════════════════════════ -->
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/-NIDS-0a0e27?style=for-the-badge" alt="NIDS"/>
+<img src="https://img.shields.io/badge/🛡️-NIDS-0a0e27?style=for-the-badge" alt="NIDS"/>
 
 # Network Intrusion Detection System
 
-###   || Real-Time AI-Powered Threat Detection ||
+### ⚡ Real-Time AI-Powered Threat Detection ⚡
 
 **Catch attacks before they catch you.**
 
@@ -23,7 +23,7 @@
 
 <br/>
 
-[Features](#-features) • [ Architecture](#-system-architecture) • [ Setup](#-installation) • [ Results](#-results) • [ Demo](#-screenshots)
+[Features](#-features) • [Architecture](#-system-architecture) • [Installation](#️-installation) • [Usage](#️-usage) • [Results](#-results)
 
 <br/>
 
@@ -35,7 +35,24 @@
 
 ---
 
-##  What Is This?
+## 📖 Table of Contents
+- [What Is This?](#-what-is-this)
+- [Features](#-features)
+- [System Architecture](#-system-architecture)
+- [Tech Stack](#️-tech-stack)
+- [Project Structure](#-project-structure)
+- [Installation](#️-installation)
+- [Usage](#️-usage)
+- [Dataset & ML Models](#-dataset--ml-models)
+- [Results](#-results)
+- [Detection Rules](#-detection-rules)
+- [Project Roadmap](#-project-roadmap)
+- [Testing Guide](#-testing-guide)
+- [Author](#-author)
+
+---
+
+## 🎯 What Is This?
 
 > **A Python-powered Network Intrusion Detection System** that watches your network in real time, spots malicious traffic using **AI + rules**, and warns you instantly on a **live dashboard**.
 
@@ -47,19 +64,19 @@ Think of it as a **security guard for your network** — except it never sleeps,
 <tr>
 <td width="33%" align="center">
 
-###  Smart
+### 🧠 Smart
 Uses **XGBoost ML** trained on 125,000+ attack samples with **98.5% accuracy**.
 
 </td>
 <td width="33%" align="center">
 
-###  Real-Time
+### ⚡ Real-Time
 Captures and classifies live traffic **packet-by-packet** as it flows.
 
 </td>
 <td width="33%" align="center">
 
-###  Multi-Layer
+### 🚨 Multi-Layer
 Combines **rules + ML + anomaly detection** to catch known *and* unknown threats.
 
 </td>
@@ -68,13 +85,13 @@ Combines **rules + ML + anomaly detection** to catch known *and* unknown threats
 
 ---
 
-##  Features
+## ✨ Features
 
 <table>
 <tr>
 <td>
 
-###  Capture
+### 📡 Capture
 - Live packet sniffing with **Scapy**
 - Wi-Fi / Ethernet support
 - Npcap driver integration
@@ -83,7 +100,7 @@ Combines **rules + ML + anomaly detection** to catch known *and* unknown threats
 </td>
 <td>
 
-###  Detection
+### 🚨 Detection
 - **SYN Flood** detection
 - **Port Scan** detection
 - **ICMP Flood** detection
@@ -92,7 +109,7 @@ Combines **rules + ML + anomaly detection** to catch known *and* unknown threats
 </td>
 <td>
 
-###  Intelligence
+### 🧠 Intelligence
 - **XGBoost** classifier (5 classes)
 - **Autoencoder** for zero-day
 - Feature extraction (41 features)
@@ -101,7 +118,7 @@ Combines **rules + ML + anomaly detection** to catch known *and* unknown threats
 </td>
 <td>
 
-###  Visualization
+### 📊 Visualization
 - Live Streamlit dashboard
 - Protocol distribution pie
 - Top source IPs chart
@@ -113,17 +130,18 @@ Combines **rules + ML + anomaly detection** to catch known *and* unknown threats
 
 ---
 
-##  System Architecture
+## 🏗️ System Architecture
 
 <div align="center">
 
-![Architecture](docs/architecture.png)
+> *Note: Diagram coming soon. See the table below for detailed layer information.*
+> <!-- ![Architecture](docs/architecture.png) -->
 
 </div>
 
 <br/>
 
-|  Layer |  Components |  Role |
+| 🔹 Layer | 🧩 Components | 🎯 Role |
 |:--------:|:--------------|:--------|
 | **1** | Network Interface → Scapy Sniffer → Parser | Capture raw traffic |
 | **2** | Feature Extractor → Preprocessor → Vector | Convert to ML input |
@@ -133,11 +151,11 @@ Combines **rules + ML + anomaly detection** to catch known *and* unknown threats
 
 ---
 
-##  Tech Stack
+## 🛠️ Tech Stack
 
 <div align="center">
 
-|  Category |  Tools |
+| 🧪 Category | 🛠️ Tools |
 |:-----------:|:---------|
 | **Language** | ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white&style=flat-square) |
 | **Capture** | ![Scapy](https://img.shields.io/badge/-Scapy-4B8BBE?style=flat-square) ![Npcap](https://img.shields.io/badge/-Npcap-0078D4?style=flat-square) |
@@ -149,10 +167,10 @@ Combines **rules + ML + anomaly detection** to catch known *and* unknown threats
 
 ---
 
-##  Project Structure
+## 📁 Project Structure
 
-```
- NETWORK-INTRUSION-DETECTION-SYSTEM/
+```text
+🛡️ NETWORK-INTRUSION-DETECTION-SYSTEM/
 │
 ├── 📄 packet_capture.py          # Main entry — sniff + detect + log
 ├── 📄 requirements.txt           # Python dependencies
@@ -184,11 +202,9 @@ Combines **rules + ML + anomaly detection** to catch known *and* unknown threats
 │   ├── 📦 scaler.pkl
 │   └── 📦 le_*.pkl
 │
-├── 📂 docs/
-│   ├── 🖼️ architecture.png
-│   └── 📂 screenshots/
-│
-└── 📂 logs/
+└── 📂 docs/
+    ├── 🖼️ architecture.png
+    └── 📂 screenshots/
 ```
 
 ---
@@ -199,7 +215,7 @@ Combines **rules + ML + anomaly detection** to catch known *and* unknown threats
 <tr>
 <td width="60">
 
-###  Prerequisites
+### 🔧 Prerequisites
 
 - Python **3.10+**
 - **Npcap** (Windows users) — install with WinPcap compatibility
@@ -208,7 +224,7 @@ Combines **rules + ML + anomaly detection** to catch known *and* unknown threats
 </td>
 <td width="40">
 
-###  Setup Time
+### ⏱️ Setup Time
 
 > **~5 minutes**
 >
@@ -221,16 +237,16 @@ Combines **rules + ML + anomaly detection** to catch known *and* unknown threats
 ### 📥 Quick Start
 
 ```bash
-# 1️⃣ Clone
+# 1️⃣ Clone the repository
 git clone https://github.com/Ayushdhaundiyal/NETWORK-INTRUSION-DETECTION-SYSTEM.git
 cd NETWORK-INTRUSION-DETECTION-SYSTEM
 
-# 2️⃣ Virtual environment
+# 2️⃣ Create virtual environment
 python -m venv .venv
 .venv\Scripts\activate              # Windows
 # source .venv/bin/activate         # Mac / Linux
 
-# 3️⃣ Install
+# 3️⃣ Install dependencies
 pip install -r requirements.txt
 ```
 
@@ -242,7 +258,7 @@ pip install -r requirements.txt
 <tr>
 <td align="center" width="33%">
 
-### 1️⃣ Train
+### 1️⃣ Train ML Model
 ```bash
 python src/train_model.py
 ```
@@ -251,16 +267,16 @@ Trains XGBoost on NSL-KDD → **98.5% accuracy**
 </td>
 <td align="center" width="33%">
 
-### 2️⃣ Capture
+### 2️⃣ Capture Packets
 ```bash
 python packet_capture.py
 ```
- **Run as Administrator**
+⚠️ **Run as Administrator**
 
 </td>
 <td align="center" width="33%">
 
-### 3️⃣ Dashboard
+### 3️⃣ Start Dashboard
 ```bash
 streamlit run dashboard/app.py
 ```
@@ -270,37 +286,29 @@ Open **localhost:8501**
 </tr>
 </table>
 
-###  Sample Output
+### 🎬 Sample Output
 
-```
- Starting NIDS capture... Press Ctrl+C to stop.
+```text
+🔍 Starting NIDS capture... Press Ctrl+C to stop.
 ─────────────────────────────────────────────────────────
-2025-01-15 10:30:12 | 192.168.1.5:52341 → 142.250.183.14:443 | TCP | 66B
+2026-10-13 10:30:12 | 192.168.1.5:52341 → 142.250.183.14:443 | TCP | 66B
 🧠 ML Detection: normal (confidence 0.99)
 ─────────────────────────────────────────────────────────
-2025-01-15 10:30:15 | 192.168.1.100:44122 → 10.0.0.1:80 | TCP | 74B
+2026-10-13 10:30:15 | 192.168.1.100:44122 → 10.0.0.1:80 | TCP | 74B
 🚨 ALERT: SYN Flood from 192.168.1.100
- ML Detection: neptune (confidence 0.97)
+🧠 ML Detection: neptune (confidence 0.97)
 ─────────────────────────────────────────────────────────
 ```
 
 ---
 
-##  Dataset
+## 📊 Dataset & ML Models
 
-<table>
-<tr>
-<td>
-
-###  NSL-KDD
+### 🗃️ The Dataset (NSL-KDD)
 
 The benchmark dataset for NIDS research — an improved version of KDD Cup 99 with redundant records removed.
 
-</td>
-</tr>
-</table>
-
-|  Property |  Value |
+| 📌 Property | 📈 Value |
 |:-----------|:---------|
 | **Source** | [Kaggle — NSL-KDD](https://www.kaggle.com/datasets/hassan06/nslkdd) |
 | **Features** | 41 |
@@ -308,15 +316,13 @@ The benchmark dataset for NIDS research — an improved version of KDD Cup 99 wi
 | **Test samples** | 22,544 |
 | **Classes** | Normal, DoS, Probe, R2L, U2R |
 
----
-
-## Machine Learning Models
+<br/>
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-###  XGBoost (Supervised)
+### 🎯 XGBoost (Supervised)
 
 **Classifies known attacks.**
 
@@ -328,12 +334,12 @@ The benchmark dataset for NIDS research — an improved version of KDD Cup 99 wi
 | learning_rate | 0.1 |
 | Classes | 5 |
 
- **Purpose:** Detect DoS, Probe, R2L, U2R
+✅ **Purpose:** Detect DoS, Probe, R2L, U2R
 
 </td>
 <td width="50%" valign="top">
 
-###  Autoencoder (Unsupervised)
+### 🔍 Autoencoder (Unsupervised)
 
 **Finds unknown threats.**
 
@@ -344,7 +350,7 @@ The benchmark dataset for NIDS research — an improved version of KDD Cup 99 wi
 | Decoder | 8 → 16 |
 | Output | 41 |
 
- **Purpose:** Detect zero-day attacks by reconstruction error
+✅ **Purpose:** Detect zero-day attacks by reconstruction error
 
 </td>
 </tr>
@@ -356,20 +362,20 @@ The benchmark dataset for NIDS research — an improved version of KDD Cup 99 wi
 
 <div align="center">
 
-###  XGBoost Performance
+### 🎯 XGBoost Performance
 
-|  Metric |  Score |
+| 📊 Metric | 🎖️ Score |
 |:---------:|:---------:|
-| **Accuracy** |  **98.5%** |
-| **Precision** |  97.2% |
-| **Recall** |  98.1% |
-| **F1-Score** |  97.6% |
+| **Accuracy** | 🟢 **98.5%** |
+| **Precision** | 🟢 97.2% |
+| **Recall** | 🟢 98.1% |
+| **F1-Score** | 🟢 97.6% |
 
 </div>
 
-###  Per-Class Performance
+### 📋 Per-Class Performance
 
-|  Class | Precision | Recall | F1-Score |
+| 🎯 Class | Precision | Recall | F1-Score |
 |:--------:|:---------:|:------:|:--------:|
 | Normal | 0.99 | 0.99 | 0.99 |
 | DoS | 0.98 | 0.99 | 0.98 |
@@ -377,7 +383,7 @@ The benchmark dataset for NIDS research — an improved version of KDD Cup 99 wi
 | R2L | 0.95 | 0.93 | 0.94 |
 | U2R | 0.92 | 0.90 | 0.91 |
 
-###  Autoencoder
+### 🔍 Autoencoder
 
 | Metric | Value |
 |:-------|:------|
@@ -387,41 +393,25 @@ The benchmark dataset for NIDS research — an improved version of KDD Cup 99 wi
 
 ---
 
-## Detection Rules
+## 🚨 Detection Rules
 
-|  Attack |  Threshold |  Logic |
+| 🚨 Attack | 📏 Threshold | 🔍 Logic |
 |:---------:|:------------:|:---------|
 | **SYN Flood** | > 50 SYN packets | Track SYN flag count per IP |
 | **Port Scan** | > 15 unique ports | Track distinct destination ports |
 | **ICMP Flood** | > 100 ICMP packets | Track ICMP count per IP |
 
->  All thresholds are configurable in `src/detector.py`.
+> 🛠️ All thresholds are configurable in `src/detector.py`.
 
 ---
 
-## 📸 Screenshots
-
-<div align="center">
-
-###  Live Dashboard
-![Dashboard](docs/screenshots/dashboard.png)
-
-###  Alerts Feed
-![Alerts](docs/screenshots/alerts.png)
-
-###  Terminal Output
-![Terminal](docs/screenshots/terminal.png)
-
-</div>
-
----
-
-##  Project Roadmap
+## 🗺️ Project Roadmap
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
+### ✅ Phase 1 — Foundation
 > *Capture + Rules + Basic Dashboard*
 
 - [x] Live packet capture with Scapy
@@ -433,6 +423,7 @@ The benchmark dataset for NIDS research — an improved version of KDD Cup 99 wi
 </td>
 <td width="50%" valign="top">
 
+### ✅ Phase 2 — Intelligence
 > *ML + Anomaly + Advanced Dashboard*
 
 - [x] NSL-KDD integration
@@ -448,39 +439,36 @@ The benchmark dataset for NIDS research — an improved version of KDD Cup 99 wi
 
 ---
 
-
-
-
-##  Testing Guide
+## 🧪 Testing Guide
 
 <table>
 <tr>
 <td width="33%">
 
-###  SYN Flood
+### 🚨 SYN Flood
 ```bash
 sudo hping3 -S --flood \
   -p 80 127.0.0.1
 ```
-→ **Expected:** ` SYN Flood` alert
+→ **Expected:** `🚨 SYN Flood` alert
 
 </td>
 <td width="33%">
 
-###  Port Scan
+### 🔍 Port Scan
 ```bash
 nmap -sS 127.0.0.1
 ```
-→ **Expected:** ` Port Scan` alert
+→ **Expected:** `🚨 Port Scan` alert
 
 </td>
 <td width="33%">
 
-###  ML Detection
+### 🧠 ML Detection
 ```bash
 python packet_capture.py
 ```
-→ **Expected:** ` ML: normal (0.99)`
+→ **Expected:** `🧠 ML: normal (0.99)`
 
 </td>
 </tr>
@@ -488,9 +476,9 @@ python packet_capture.py
 
 ---
 
-##  Contributing
+## 🤝 Contributing
 
-Contributions are welcome! 
+Contributions are welcome! ❤️
 
 ```bash
 # Fork → Clone → Branch
@@ -503,11 +491,11 @@ git push origin feature/AmazingFeature
 
 ---
 
-##  Author
+## 👤 Author
 
 <div align="center">
 
-### **Ayush **
+### **Ayush Dhaundiyal**
 
 [![GitHub](https://img.shields.io/badge/GitHub-@Ayushdhaundiyal-181717?style=for-the-badge&logo=github)](https://github.com/Ayushdhaundiyal)
 
@@ -515,15 +503,11 @@ git push origin feature/AmazingFeature
 
 ---
 
-
-
----
-
-##  Acknowledgments
+## 🙏 Acknowledgments
 
 <div align="center">
 
-|  Source | Contribution |
+| 🏛️ Source | 🎁 Contribution |
 |:----------:|:----------------|
 | [NSL-KDD](https://www.unb.ca/cic/datasets/nsl.html) | Benchmark dataset |
 | [Scapy](https://scapy.net) | Packet manipulation |
@@ -537,17 +521,15 @@ git push origin feature/AmazingFeature
 
 <div align="center">
 
-###  If this project helped you, please give it a star! 
+### ⭐ If this project helped you, please give it a star! ⭐
 
 <br/>
 
-![Made with](https://img.shields.io/badge/Made%20with-%20and%20Python-red?style=for-the-badge)
+![Made with](https://img.shields.io/badge/Made%20with-❤️%20and%20Python-red?style=for-the-badge)
 
 **Made by Ayush Dhaundiyal • 2026**
 
 ![Python](https://img.shields.io/badge/Python-3.10-lightblue)
-![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status:Active-green)
-
 
 </div>

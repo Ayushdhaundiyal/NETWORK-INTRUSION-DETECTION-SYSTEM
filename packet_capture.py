@@ -59,7 +59,6 @@ def process_packet(packet):
     label, confidence = ml_predict(packet)
     print(f"    |AI says|      : {label.upper()} (Confidence: {confidence * 100:.1f}%)")
 
-
 if __name__ == "__main__":
     print(" Starting NIDS capture... Press Ctrl+C to stop.")
     sniff(prn=process_packet, store=False)
